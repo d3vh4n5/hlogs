@@ -1,15 +1,13 @@
-import e from "express";
-import { config } from "dotenv";
+import app from "./src/app.js";
+import { config } from "./src/config/config.js";
 
-const app = e()
-config()
+const PORT = config.app.port
 
-const PORT = process.env.PORT || '3000'
-
-app.get('/', (req, res)=> {
-    res.json({msg: "Hola, estoy funcionando"})
-})
 
 app.listen(PORT, ()=>{
-    console.log(`App corriendo en http://localhost:${PORT}`)
+    console.log(`
+        Nombre: G10 Backend Node
+        Ambiente: ${config.env}
+        Aplicacion funcionando en: http://localhost:${PORT}
+    `)
 })
