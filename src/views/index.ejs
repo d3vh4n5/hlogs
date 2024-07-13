@@ -1,0 +1,33 @@
+
+<section>
+    <h2><%= title %></h2>
+    <hr>
+    <p>
+        Esta es la documentación de nuestra API.
+    </p>
+    <article>
+        <h5>Información relevante del estado de la aplicación:</h5>
+        <p>
+            <b>DB Status:</b> 
+            <% if (dbStatus === 'DB conectada correctamente') {%>
+                <span class="ok"><%= dbStatus %></span>
+            <% } else { %>
+              <span class="error">Error al conectar la Base de Datos. <%= dbStatus %></span>
+            <% } %>
+        </p>
+    </article>
+    <p>
+        <em>
+            Te invitamos a navegar nuestro front-end integrado con esta API en: 
+             <a href="<%= frontendURL %>" target="_blank"><%= frontendURL %></a>
+        </em>
+    </p>
+    <p>
+        Github Front-end: <a href="https://github.com/d3vh4n5/CaC-Fullstack-Node-Grupo10">front-end</a>
+    </p>
+    <p>
+        Github Back-end: <a href="https://github.com/d3vh4n5/cac-fullstack-node-g10-backend">back-end</a>
+    </p>
+    
+    <img src="/img/fss.png" width="500px" alt="Front screen-shoot">
+</section>

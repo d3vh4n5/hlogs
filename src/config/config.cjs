@@ -1,8 +1,9 @@
-import { config as dotenfConfig } from "dotenv";
-// dotenfConfig({ path: `.env` });
-dotenfConfig()
+const dotenv = require('dotenv')
 
-export const config = {
+// dotenv.config({ path: `.env` });
+dotenv.config();
+
+const config = { 
     env: process.env.NODE_ENV ?? "dev",
     secret: {
         accessToken: process.env.ACCESS_TOKEN_SECRET,
@@ -20,3 +21,5 @@ export const config = {
         port:  process.env.DB_PORT ?? '3306',
     }
 }
+
+module.exports = config

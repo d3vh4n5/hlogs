@@ -1,0 +1,41 @@
+### Prueba de todos los recursos
+GET http://localhost:5000/api/v1/contact-messages/
+
+### Prueba con ID
+GET http://localhost:5000/api/v1/contact-messages/2
+
+### Prueba de id inexistente
+GET http://localhost:5000/api/v1/contact-messages/222222
+
+
+
+ # ----------- Desde que agregué validación por captcha, ya no podrá probarse así el endpoint
+### Crear un recurso nuevo
+POST http://localhost:5000/api/v1/contact-messages/
+Content-Type: application/json
+
+{ 
+    "name": "Elon",
+    "surname": "Musk",
+    "email": "mail@spacex.com",
+    "subject": "Hiring",
+    "message": "Hola, quiero contratarlos para mi empresa Space X",
+    "type": 1
+}
+
+### el update edbería ser solo para pasar el "read" a true. pero esto es para test
+PUT http://localhost:5000/api/v1/contact-messages/2
+Content-Type: application/json
+
+{ 
+    "name": "Elon",
+    "surname": "Musk",
+    "email": "mail@spacex.com",
+    "subject": "Hiring",
+    "message": "Hola, quiero contratarlos para mi empresa Space X",
+    "type": 1
+}
+
+###
+
+DELETE http://localhost:5000/api/v1/contact-messages/2

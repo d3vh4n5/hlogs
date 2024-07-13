@@ -1,0 +1,31 @@
+### Get a la ruta principal
+GET http://localhost:5000/api/v1/examples/
+
+### GET por ID
+GET http://localhost:5000/api/v1/examples/4
+
+### GET por ID inexistente
+GET http://localhost:5000/api/v1/examples/9999999999
+
+### GET por ID con formato incorrecto
+GET http://localhost:5000/api/v1/examples/SOyAlg0R4r-o
+
+# **************** Solicitudes POST ******************
+
+### Post ruta principal
+POST http://localhost:5000/api/v1/examples/
+Content-Type: application/json
+
+{
+    "data": "Esto es un nuevo ejemplo"
+}
+
+### Post pruebas de validacion
+POST http://localhost:5000/api/v1/examples/validator
+Content-Type: application/json
+
+{
+    "name": "John",
+    "password": "123Ac!4<>",
+    "email": "asd@mail.com"
+}

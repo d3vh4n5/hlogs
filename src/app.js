@@ -1,33 +1,47 @@
-import e from "express";
-import cors from 'cors'
+const path = require('node:path');
+const express = require('express')
+const app = express()
+const cors = require('cors')
+const expressLayouts = require('express-ejs-layouts')
 
+const appRouter = require('./routes/appRouter.cjs')
+const contactMessageRouter = require('./routes/contactMessageRouter')
+const authRouter = require('./routes/authRouter')
+const clinicHistoryRouter = require('./routes/clinicHistoryRouter')
+const uploadsRouter = require('./routes/uploadsRouter')
 
-// Creo la app
-const app = e()
-
-//middlewares
-app.use(cors())
-app.use(e.json())
+// middlewares
+app.use(cors()) // Por temas de seguridad del navegador
+app.use(express.json()) // Para que lea los json del body
 // Middleware para registrar cada solicitud recibida
 app.use((req, res, next) => {
     console.log('Solicitud recibida:', req.method, req.url);
-    next()
+    next(); // Llama a next() para pasar el control al siguiente middleware
 });
-app.use(e.static('public'))
+// Configurar el directorio de vistas y el motor de plantillas
+app.set('views', path.join(__dirname, 'views'));
+app.set('view engine', 'ejs');
+// middleware para hacer layouts con ejs
+app.use(expressLayouts)
+// Servidor de archivos estáticos
+app.use(express.static('public')) 
+// app.use(express.static(path.join(__dirname, 'public'))) 
 
-//App routes
-app.get('/', (req, res)=>{
+
+// Rutas de aplicacion
+app.get('/', (req, res) => {
     res.json({
         msg: "Aplicación funcionando"
     })
 })
+// app.use('/', appRouter);
+// app.use('/uploads', uploadsRouter)
 
-// API Routes
-app.use('/api/v1/test', (req, res) => {
-    res.json({
-        msg: "Estas en la api"
-    })
-})
+
+// Rutas de API
+app.use('/api/v1/contact-messages', contactMessageRouter)
+app.use('/api/v1/auth', authRouter)
+app.use('/api/v1/clinic-histories', clinicHistoryRouter)
 
 // Middleware para manejar rutas no encontradas (404)
 app.use((req, res, next) => {
@@ -40,4 +54,4 @@ app.use((err, req, res, next) => {
     res.status(500).send({ error: 'Algo salió mal!' });
 });
 
-export default app
+module.exports = app

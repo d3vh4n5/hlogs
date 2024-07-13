@@ -1,13 +1,12 @@
-import app from "./src/app.js";
-import { config } from "./src/config/config.js";
+const app = require('./src/app')
+const config = require('./src/config/config.cjs')
+const { dbConnTest } = require('./src/database/db')
 
-const PORT = config.app.port
-
-
-app.listen(PORT, ()=>{
+app.listen(config.app.port, async ()=>{
+    await dbConnTest()
     console.log(`
         Nombre: G10 Backend Node
         Ambiente: ${config.env}
-        Aplicacion funcionando en: http://localhost:${PORT}
+        Aplicacion funcionando en: http://localhost:${config.app.port}
     `)
 })

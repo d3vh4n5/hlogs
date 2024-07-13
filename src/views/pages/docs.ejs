@@ -1,0 +1,119 @@
+<section>
+    <h2>Docs</h2>
+    <hr>
+    <article>
+        <h3>Sugerencias: </h3>
+        <p>
+            En nuestro proyecto, protegimos la mayoría de las rutas con 
+            JWT, por lo que probar directamente las rutas protegidas 
+            no sería posible.
+        </p>
+        <p>
+            Sugerimos probarlas directamente en la sección TEST de <a href="https://healthupcac.netlify.app/" target="_blank">
+            nuestra aplicación de front-end </a>. Para ello deberá registrarse y logearse
+            en la misma. Tambien puede probar los flujos de usuario de la misma,
+            en ellos estarían funcionando también todos los endpoints.
+        </p>
+        <p>
+            Otra manera, es probar los archivos de extención ".rest" dentro de
+            la carpeta "src/test" de nuestro proyecto, y habiendo ejecutado 
+            la aplicación con un IDE y configurando la Base de Datos 
+            (Solo conectarla, ya que sequelize debería crear las tablas).
+        </p>
+        <p>
+            Para más información de como usar Rest Client haga click <a href="/rest-client">AQUÍ</a>
+        </p>
+        <p>
+            Cabe aclarar que usándo este método, deberá tomarse la molestia de
+            ejecutar las peticiones de Registrar y de Login desde los mismos 
+            archivos ".rest", y que al logearse, deberá copiar el 
+            <code>accessToken</code> y pegarlo en el "Bearer" de las demás solicitudes.
+            Es por esto que recomendamos que utilice nuestra aplicación 🙂.
+        </p>
+    </article>
+    <h3>Endpoints:</h3>
+    <article>
+        <ul>
+            <li>
+                "/api/v1/auth"
+                <ul>
+                    <span class="ok">
+                        Rutas básicas sin token:
+                    </span>
+                    <li><b>POST "/register"</b></li>
+                    <li><b>POST "/login"</b></li>
+                    <!-- <li><b>DELETE </b></li>
+                    <li><b>POST </b></li> -->
+                    <hr>
+                    <span class="error">
+                        Rutas ADM protegidas por JWT:
+                    </span>
+                    <li><b>GET "/users"</b></li>
+                    <li><b>GET "/users/id"</b></li>
+                    <li><b>PUT "/users/id"</b></li>
+                    <li><b>DELETE "/users/id"</b></li>
+                    <hr>
+                    <span class="error">
+                        Rutas de ejemplo para pruebas, protegidas por JWT:
+                    </span>
+                    <li><b>GET "/protected"</b></li>
+                    <li><b>POST "/protected"</b></li>
+                </ul>
+            </li>
+
+            <li>
+                "/api/v1/contact-messages"
+                <ul>
+                    <span class="ok">
+                        Rutas de momento sin protección.
+                    </span>
+                    <li><b>GET "/"</b></li>
+                    <li><b>GET "/id"</b></li>
+                    <li><b>POST ""</b>
+                        <span class="error">Este endpoint tiene validación por reCAPTCHA</span>
+                    </li> 
+                    <li><b>PUT "/id"</b></li>
+                    <li><b>DELETE "/id"</b></li>
+                </ul>
+            </li>
+
+            <li>
+                "/api/v1/medical-studies"
+                <ul>
+                    <span class="error">
+                        Rutas de Usuario personales, protegidas por JWT e 
+                        identificación personal del usuario.
+                    </span>
+                    <li><b>GET ""</b></li>
+                    <li><b>GET "/id"</b></li>
+                    <li><b>POST ""</b></li>
+                    <li><b>PUT "/id"</b></li>
+                    <li><b>DELETE "/id"</b></li>
+                </ul>
+            </li>
+            <li>
+                "/api/v1/clinic-histories"
+                <span class="error">
+                    Rutas de Usuario personales, protegidas por JWT e 
+                    identificación personal del usuario.
+                </span>
+                <ul>
+                    <li><b>GET ""</b></li>
+                    <li><b>GET "/user-clinic-history"</b></li>
+                    <li><b>GET "/id"</b></li>
+                    <li><b>POST ""</b></li>
+                    <li><b>PUT "/id"</b></li>
+                    <li><b>DELETE "/id"</b></li>
+                </ul>
+                <blockquote>
+                    En este endpoint diferenciamos los get totales y por id, 
+                    que serían los que usaría por ejemplo un administrador, 
+                    del endpoint que usaría cada usario para obtener unicamente
+                    su propia historia clínica.
+                </blockquote>
+            </li>
+        </ul>
+    </article>
+    <h3>Base de datos:</h3>
+    <img src="/img/db.png" width="500px" alt="Front screen-shoot">
+</section>
