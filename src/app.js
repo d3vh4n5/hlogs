@@ -29,13 +29,13 @@ app.use(express.static('public'))
 
 
 // Rutas de aplicacion
-app.get('/', (req, res) => {
-    res.json({
-        msg: "Aplicación funcionando"
-    })
-})
-// app.use('/', appRouter);
-// app.use('/uploads', uploadsRouter)
+// app.get('/', (req, res) => {
+//     res.json({
+//         msg: "Aplicación funcionando"
+//     })
+// })
+app.use('/', appRouter);
+app.use('/uploads', uploadsRouter)
 
 
 // Rutas de API
