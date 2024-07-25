@@ -23,8 +23,12 @@ app.set('view engine', 'ejs');
 // middleware para hacer layouts con ejs
 app.use(expressLayouts)
 // Servidor de archivos estáticos
-app.use(express.static(path.join(__dirname, '../public'), { extensions: ["html", "css", "js", "png"] })) 
-// app.use(express.static(path.join(__dirname, 'public'))) 
+app.use( express.static(
+    path.join(__dirname, '../public'), 
+    { extensions: // extensiones permitidas
+        ["html", "css", "js", "png"] 
+    }
+)) 
 
 
 // Rutas de aplicacion
