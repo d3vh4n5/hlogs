@@ -8,7 +8,6 @@ const appRouter = require('./routes/appRouter.cjs')
 const contactMessageRouter = require('./routes/contactMessageRouter')
 const authRouter = require('./routes/authRouter')
 const clinicHistoryRouter = require('./routes/clinicHistoryRouter')
-const uploadsRouter = require('./routes/uploadsRouter')
 
 // middlewares
 app.use(cors()) // Por temas de seguridad del navegador
@@ -35,7 +34,6 @@ app.use(express.static('public'))
 //     })
 // })
 app.use('/', appRouter);
-app.use('/uploads', uploadsRouter)
 
 
 // Rutas de API

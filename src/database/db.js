@@ -1,8 +1,12 @@
 const { Sequelize } = require('sequelize')
 const config = require('../config/config.cjs')
 
-// Fix "Please install mysql2 package manually".
-import mysql2 from 'mysql2';
+/**
+ // Fix "Please install mysql2 package manually".
+ // import mysql2 from 'mysql2';
+ *  @fuente https://github.com/sequelize/sequelize/issues/9489#issuecomment-486047783
+ */
+const mysql2 = require('mysql2')
 
 // credenciales
 /**
