@@ -1,6 +1,9 @@
 const { Sequelize } = require('sequelize')
 const config = require('../config/config.cjs')
 
+// Fix "Please install mysql2 package manually".
+import mysql2 from 'mysql2';
+
 // credenciales
 /**
  * (dbname, user, pass {host, lenguage, port})
@@ -12,6 +15,7 @@ const db = new Sequelize(
     {
         host: config.database.host,
         dialect: "mysql",
+        dialectModule : mysql2, // A ver si con esto arreglo el error de vercel de "instalar mysql2 manualmente"
         port: config.database.port,
         // logging: false 
     }
